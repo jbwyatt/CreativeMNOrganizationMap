@@ -1,31 +1,26 @@
-//test.js
+//script.js
 
-var map;
-var orgs_geojson;
-var markers;
+//Custom style URL
+var url = "mapbox://styles/creativemn/cj9g1ljm28jvm2rlo4nowrt0m"
+// Data location
+var data_location = 'data/MNOrgs.geojson'
+    
+//Access Token for Mapbox
+L.mapbox.accessToken = 'pk.eyJ1IjoiY3JlYXRpdmVtbiIsImEiOiJjajlnMWtxN3EycXVoMzNtcXVla2d2dTR1In0.qtU6-k6aSqU3a3qBv7B5Vg'
 
+    // Create map
+    var map = L.mapbox.map('map', /*'mapbox.light'*/)
+        .setView([46.35, -94.2], 7);
+    // Add custom basemap style to map
+    var styleLayer = L.mapbox.styleLayer(url)
+        .addTo(map);
 
-// initializes simple map
-function initmap() {
-    // create map centered on Minnesota
-    map = new L.Map('map', {
-	center: [46.35, -94.2],
-	zoom: 7
-    });
-
-    // set basemap (tile layer)
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	maxZoom: 18,
-	id: 'mapbox.light',
-	accessToken: 'pk.eyJ1IjoiY3JlYXRpdmVtbiIsImEiOiJjajlnMWtxN3EycXVoMzNtcXVla2d2dTR1In0.qtU6-k6aSqU3a3qBv7B5Vg'
-    }).addTo(map);
 
     // Create cluster layer
-    var markers = L.markerClusterGroup();
+    var markers = new L.markerClusterGroup();
 
     // Load in geojson data
-    $.getJSON('data/MNOrgs.geojson', function(data) {
+    $.getJSON(data_location, function(data) {
 	// Create geojson layer and stylize
 	var orgs_geojson = L.geoJson(data, {
 	    // Assigns colors to feature based on Discipline
@@ -53,12 +48,10 @@ function initmap() {
         });
 	// Add geoJsonLayer to markercluster group
 	markers.addLayer(orgs_geojson);
+	
 	// Add the markercluster group to the map
 	map.addLayer(markers);
     });
-}
 
-// call creation of map
-initmap();
 
 
