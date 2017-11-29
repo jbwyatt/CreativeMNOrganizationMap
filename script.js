@@ -27,14 +27,14 @@ L.mapbox.accessToken = 'pk.eyJ1IjoiY3JlYXRpdmVtbiIsImEiOiJjajlnMWtxN3EycXVoMzNtc
 	    // **** Colors were randomly picked****
             style: function(feature) {
 		switch (feature.properties.DISCIPLINE){
-	        case 'Arts Multipurpose' : return {color: "#ff0000"};  // red
-	        case 'History' : return {color: "#ffff00"};  // yellow
-	        case 'Humanities' : return {color: "#008000"}; // green
-	        case 'Literary Arts' : return {color: "#0000ff"}; // blue
-	        case 'Media & Communications' : return {color: "#800080"}; // purple
-	        case 'Other' : return {color: "#800000"}; // maroon
-	        case 'Performing Arts' : return {color: "#00ffff"}; // aqua
-		case 'Visual Arts & Architecture' : return {color: "#008000"};  // olive
+	         case 'Arts Multipurpose' : return {color: "#FFC533"}; // gold
+	        case 'History' : return {color: "#F78F2E"};  // orange
+	        case 'Humanities' : return {color: "#B0D456"}; // light green
+	        case 'Literary Arts' : return {color: "#09977E"}; // teal
+	        case 'Media & Communications' : return {color: "#EF5E7D"};  // pink
+	        case 'Other' : return {color: "#A05AA2"}; // purple
+	        case 'Performing Arts' : return {color: "#076E98"}; // dark blue
+		case 'Visual Arts & Architecture' : return {color: "#8FD2AC"};  // light teal
 		}
 	    },
 	    // Create markers
