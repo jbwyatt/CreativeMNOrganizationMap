@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -33,9 +34,84 @@
   </head>
   <body>
     <div id="map"></div>
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+          <ul role="tablist">
+	    <li><a href="#search" role="tab"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+            <li><a href="#results" role="tab"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+            <li><a href="#help" role="tab"><i class="fa fa-question" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+
+	  <!-- Search -->
+          <div class="sidebar-pane" id="search">
+            <h1 class="sidebar-header">Search<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+	    
+	    <!-- Arts Multipurpose -->
+	    <p>Arts Multipurpose</p>
+	    <input id="checkBox_AM" type="checkbox" onclick="clickAM();" checked>
+
+	    <!-- History -->
+	    <p>History</p>
+	    <input id="checkBox_HST" type="checkbox" onclick="clickHST();" checked>
+
+	    <!-- Humanities -->
+	    <p>Humanities</p>
+	    <input id="checkBox_HUM" type="checkbox" onclick="clickHUM();" checked>
+
+	    <!-- Literary & Arts -->
+	    <p>Literary & Arts</p>
+	    <input id="checkBox_LIT" type="checkbox"  onclick="clickLIT();" checked>
+	    
+	    <!-- Media & Communications -->
+	    <p>Media & Communications</p>
+	    <input id="checkBox_COMM" type="checkbox" onclick="clickCOMM();" checked>
+	    
+	    <!-- Other -->
+	    <p>Other</p>
+	    <input id="checkBox_OTH" type="checkbox" onclick="clickOTH();" checked>
+	    
+	    <!-- Performing Arts -->
+	    <p>Performing Arts</p>
+	    <input id="checkBox_PER" type="checkbox" onclick="clickPER();" checked>
+	    
+	    <!-- Visual Arts & Architecture -->
+	    <p>Visual Arts & Architecture</p>
+	    <input id="checkBox_VIS" type="checkbox" onclick="clickVIS();" checked>
+	    
+	  </div>
+	  
+	  <!-- Results -->
+          <div class="sidebar-pane" id="results">
+            <h1 class="sidebar-header">Results<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+	    <p id="initial">Click on a marker for results!</p>
+            <h3 id="organization"></h3>
+	    <p id="address_title"></p>
+	    <p id="address"></p>
+	    <p id="city_title"></p>
+	    <p id="city"></p>
+	    <p id="discipline_title"></p>
+	    <p id="discipline"></p>
+	    <p><a id="website" href=""></a></p>
+          </div>
+
+	  <!-- Help -->
+          <div class="sidebar-pane" id="help">
+            <h1 class="sidebar-header">Help<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+	    <p>This is where we will put help information</p>
+          </div>
+
+        </div>
+    <div id="map"></div>
+    <script src="https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js"></script>
+    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="plugins/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-    <script src="script.js"></script>
+    <script src="plugins/leaflet-sidebar.min.js"></script>
+    <script src="script_test.js"></script>
   </body>
 </html>
 
