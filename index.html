@@ -30,7 +30,7 @@
     <div id="map"></div>
     <div id="sidebar" class="sidebar collapsed">
         <!-- Nav tabs -->
-        <div class="sidebar-tabs">
+        <div class="sidebar-tabs" style="background-color:grey;">
           <ul role="tablist">
 	    <li><a href="#search" role="tab"><i class="fa fa-search" aria-hidden="true"></i></a></li>
             <li><a href="#results" role="tab"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
@@ -39,47 +39,9 @@
         </div>
 
         <!-- Tab panes -->
-        <div class="sidebar-content">
-
-	  <!-- Search -->
-          <div class="sidebar-pane" id="search">
-            <h1 class="sidebar-header">Search<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-	    
-	    <!-- Arts Multipurpose -->
-	    <p>Arts Multipurpose</p>
-	    <input id="checkBox_AM" type="checkbox" onclick="clickAM();" checked>
-
-	    <!-- History -->
-	    <p>History</p>
-	    <input id="checkBox_HST" type="checkbox" onclick="clickHST();" checked>
-
-	    <!-- Humanities -->
-	    <p>Humanities</p>
-	    <input id="checkBox_HUM" type="checkbox" onclick="clickHUM();" checked>
-
-	    <!-- Literary & Arts -->
-	    <p>Literary & Arts</p>
-	    <input id="checkBox_LIT" type="checkbox"  onclick="clickLIT();" checked>
-	    
-	    <!-- Media & Communications -->
-	    <p>Media & Communications</p>
-	    <input id="checkBox_COMM" type="checkbox" onclick="clickCOMM();" checked>
-	    
-	    <!-- Other -->
-	    <p>Other</p>
-	    <input id="checkBox_OTH" type="checkbox" onclick="clickOTH();" checked>
-	    
-	    <!-- Performing Arts -->
-	    <p>Performing Arts</p>
-	    <input id="checkBox_PER" type="checkbox" onclick="clickPER();" checked>
-	    
-	    <!-- Visual Arts & Architecture -->
-	    <p>Visual Arts & Architecture</p>
-	    <input id="checkBox_VIS" type="checkbox" onclick="clickVIS();" checked>
-	    
-	  </div>
-	  
-	  <!-- Results -->
+        <div class="sidebar-content" style="background-color:white; width:135%;">
+		
+		<!-- Results -->
           <div class="sidebar-pane" id="results">
             <h1 class="sidebar-header">Results<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 	    <p id="initial">Click on a marker for results!</p>
@@ -92,6 +54,64 @@
 	    <p id="discipline"></p>
 	    <p><a id="website" href=""></a></p>
           </div>
+
+	  <!-- Search -->
+          <div class="sidebar-pane" id="search">
+            <h1 class="sidebar-header">Filter<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+	    
+	    <!-- Arts Multipurpose -->
+		<div id="circle" style="background:#FFC533; width: 15px; height:15px; border-radius:50%; margin-top:15px;display:inline-block;"></div>
+		<p style="color:#FFC533;display:inline-block;">
+		<b>ARTS MULTIPURPOSE</b></p><br>
+		<input id="checkBox_AM" type="checkbox" onclick="clickAM();" checked>
+			<br><br>
+	
+	    <!-- History --> 
+	    <div id="circle" style="display:inline-block;background:#F78F2E; width: 15px; height:15px; border-radius:50%; margin-top:15px;"></div>
+		<p style="color:#F78F2E;display:inline-block;"><b>HISTORY</b></p><br>
+	    <input id="checkBox_HST" type="checkbox" onclick="clickHST();" checked>
+			<br><br>
+			
+	    <!-- Humanities --> 
+	    <div id="circle" style="background:#B0D456; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+		<p style="color:#B0D456; display:inline-block;">
+		<b>HUMANITIES</p><br>
+	    <input id="checkBox_HUM" type="checkbox" onclick="clickHUM();" checked>
+			<br><br>
+			
+	    <!-- Literary & Arts --> 
+		<div id="circle" style="background:#09977E; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+		<p style="color:#09977E; display:inline-block;">
+	    <b>LITERARY & ARTS</p><br>
+	    <input id="checkBox_LIT" type="checkbox"  onclick="clickLIT();" checked>
+				<br><br>
+				
+	    <!-- Media & Communications --> 
+	   <div id="circle" style="background:#EF5E7D; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+		<p style="color:#EF5E7D; display:inline-block;">
+		<b>MEDIA & COMMUNICATIONS</p><br>
+	    <input id="checkBox_COMM" type="checkbox" onclick="clickCOMM();" checked>
+			<br><br>
+			
+	    <!-- Other --> 
+	    <div id="circle" style="background:#A05AA2; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+		<p style="color:#A05AA2; display:inline-block;">
+		<b>OTHER</p><br>
+	    <input id="checkBox_OTH" type="checkbox" onclick="clickOTH();" checked>
+	    <br><br>
+		
+	    <!-- Performing Arts --> 
+	    <div id="circle" style="background:#076E98; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+		<p style="color:#076E98; display:inline-block;">
+		<b>PERFORMING ARTS</p><br>
+	    <input id="checkBox_PER" type="checkbox" onclick="clickPER();" checked>
+	    <br><br>
+		
+	    <!-- Visual Arts & Architecture --> 
+	    <div id="circle" style="background:#8FD2AC; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+		<p style="color:#8FD2AC; display:inline-block;">
+		<b>VISUAL ARTS & ARCHITECTURE</p><br>
+	    <input id="checkBox_VIS" type="checkbox" onclick="clickVIS();" checked>
 
 	  <!-- Help -->
           <div class="sidebar-pane" id="help">
