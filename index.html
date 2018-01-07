@@ -1,142 +1,142 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>CreativeMN</title>
-    <!--Mapbox-->
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css">
-    <!--MarkerCluster-->
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css">
-    <link rel="stylesheet" href="..\CreativeMNOrganizationMap-master\plugins\leaflet.markercluster\dist\MarkerCluster.Default.css">
-    <!--Leaflet-Sidebar-v2-->
-    <link rel="stylesheet" href="css/leaflet-sidebar.min.css">
-    <!--Font Awesome (for logos on side bar) -->
-    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+		<!DOCTYPE html>
+		<html>
+		  <head>
+		    <title>CreativeMN</title>
+		    <!--Mapbox-->
+		    <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css">
+		    <!--MarkerCluster-->
+		    <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css">
+		    <link rel="stylesheet" href="..\CreativeMNOrganizationMap-master\plugins\leaflet.markercluster\dist\MarkerCluster.Default.css">
+		    <!--Leaflet-Sidebar-v2-->
+		    <link rel="stylesheet" href="css/leaflet-sidebar.min.css">
+		    <!--Font Awesome (for logos on side bar) -->
+		    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <style>
-      body {
-          padding: 0;
-          margin: 0;
-      }
-      html, body, #map {
-          height: 100%;
-          width: 100%;
-      }
-    </style>
-  
-  </head>
-  <body>
-    <div id="map"></div>
-    <div id="sidebar" class="sidebar collapsed">
-        <!-- Nav tabs -->
-        <div class="sidebar-tabs" style="background-color:grey;">
-          <ul role="tablist">
-	    <li><a href="#search" role="tab"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-            <li><a href="#results" role="tab"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
-            <li><a href="#help" role="tab"><i class="fa fa-question" aria-hidden="true"></i></a></li>
-          </ul>
-        </div>
+		    <style>
+		      body {
+			  padding: 0;
+			  margin: 0;
+		      }
+		      html, body, #map {
+			  height: 100%;
+			  width: 100%;
+		      }
+		    </style>
 
-        <!-- Tab panes -->
-        <div class="sidebar-content" style="background-color:white; width:135%;">
-		
-		<!-- Results -->
-          <div class="sidebar-pane" id="results">
-            <h1 class="sidebar-header">Results<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-	    <p id="initial">Click on a marker for results!</p>
-            <h3 id="organization" style="width: 400px;"></h3>
-	    <p id="address_title" style="text-indent: 20px"></p>
-	    <p id="address" style="text-indent: 20px"></p>
-	    <p id="city_title" style="text-indent: 20px"></p>
-	    <p id="city" style="text-indent: 20px"></p>
-	    <p id="discipline_title" style="text-indent: 20px"></p>
-	    <p id="discipline" style="text-indent: 20px"></p>
-	    <p><a id="website" href="" style="text-indent: 20px"></a></p>
-          </div>
+		  </head>
+		  <body>
+		    <div id="map"></div>
+		    <div id="sidebar" class="sidebar collapsed">
+			<!-- Nav tabs -->
+			<div class="sidebar-tabs" style="background-color:grey;">
+			  <ul role="tablist">
+			    <li><a href="#search" role="tab"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+			    <li><a href="#results" role="tab"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+			    <li><a href="#help" role="tab"><i class="fa fa-question" aria-hidden="true"></i></a></li>
+			  </ul>
+			</div>
 
-	  <!-- Search -->
-          <div class="sidebar-pane" id="search">
-            <h1 class="sidebar-header">Filter<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-	    
-	    <!-- Arts Multipurpose -->
-		<div id="circle" style="background:#FFC533; width: 15px; height:15px; border-radius:50%; margin-top:15px;display:inline-block;"></div>
-		<p style="color:#FFC533;display:inline-block;">
-		<b>ARTS MULTIPURPOSE</b></p><br>
-		<input id="checkBox_AM" type="checkbox" onclick="clickAM();" checked>
-			<br><br>
-	
-	    <!-- History --> 
-	    <div id="circle" style="display:inline-block;background:#F78F2E; width: 15px; height:15px; border-radius:50%; margin-top:15px;"></div>
-		<p style="color:#F78F2E;display:inline-block;"><b>HISTORY</b></p><br>
-	    <input id="checkBox_HST" type="checkbox" onclick="clickHST();" checked>
-			<br><br>
-			
-	    <!-- Humanities --> 
-	    <div id="circle" style="background:#B0D456; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
-		<p style="color:#B0D456; display:inline-block;">
-		<b>HUMANITIES</p><br>
-	    <input id="checkBox_HUM" type="checkbox" onclick="clickHUM();" checked>
-			<br><br>
-			
-	    <!-- Literary & Arts --> 
-		<div id="circle" style="background:#09977E; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
-		<p style="color:#09977E; display:inline-block;">
-	    <b>LITERARY & ARTS</p><br>
-	    <input id="checkBox_LIT" type="checkbox"  onclick="clickLIT();" checked>
-				<br><br>
-				
-	    <!-- Media & Communications --> 
-	   <div id="circle" style="background:#EF5E7D; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
-		<p style="color:#EF5E7D; display:inline-block;">
-		<b>MEDIA & COMMUNICATIONS</p><br>
-	    <input id="checkBox_COMM" type="checkbox" onclick="clickCOMM();" checked>
-			<br><br>
-			
-	    <!-- Other --> 
-	    <div id="circle" style="background:#A05AA2; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
-		<p style="color:#A05AA2; display:inline-block;">
-		<b>OTHER</p><br>
-	    <input id="checkBox_OTH" type="checkbox" onclick="clickOTH();" checked>
-	    <br><br>
-		
-	    <!-- Performing Arts --> 
-	    <div id="circle" style="background:#076E98; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
-		<p style="color:#076E98; display:inline-block;">
-		<b>PERFORMING ARTS</p><br>
-	    <input id="checkBox_PER" type="checkbox" onclick="clickPER();" checked>
-	    <br><br>
-		
-	    <!-- Visual Arts & Architecture --> 
-	    <div id="circle" style="background:#8FD2AC; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
-		<p style="color:#8FD2AC; display:inline-block;">
-		<b>VISUAL ARTS & ARCHITECTURE</p><br>
-	    <input id="checkBox_VIS" type="checkbox" onclick="clickVIS();" checked>
+			<!-- Tab panes -->
+			<div class="sidebar-content" style="background-color:white; width:135%;">
 
-	  <!-- Help -->
-          <div class="sidebar-pane" id="help">
-            <h1 class="sidebar-header">Help<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-	    <p>Creative Minnesota was developed by a collaborative of arts and culture funders in partnership with Minnesota Citizens
-for the Arts (MCA).<br>
-		    <b>The Creative Minnesota Project</b><br><br>
-		    
-The Creative Minnesota project is a collaboration of many partners whose goal is to create solid, hard data about the arts sector. We intend to fill thegaps in available information about Minnesota’s cultural field and to improve our understanding of its importance to our quality of life and economy. This project is a long-term endeavor to collect and report data on the creative sector every two years for analysis, education and advocacy. <br><b>Creative Minnesota 2017</b>
+				<!-- Results -->
+			  <div class="sidebar-pane" id="results">
+			    <h1 class="sidebar-header">Results<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+			    <p id="initial">Click on a marker for results!</p>
+			    <h3 id="organization" style="width: 400px;"></h3>
+			    <p id="address_title" style="text-indent: 20px"></p>
+			    <p id="address" style="text-indent: 20px"></p>
+			    <p id="city_title" style="text-indent: 20px"></p>
+			    <p id="city" style="text-indent: 20px"></p>
+			    <p id="discipline_title" style="text-indent: 20px"></p>
+			    <p id="discipline" style="text-indent: 20px"></p>
+			    <p><a id="website" href="" style="text-indent: 20px"></a></p>
+			  </div>
 
-		Creative Minnesota 2017, released in February of 2017, is our second biennial report which is both statewide and 			regional.<br><br>
+			  <!-- Search -->
+			  <div class="sidebar-pane" id="search">
+			    <h1 class="sidebar-header">Filter<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 
-Creative Minnesota 2017 shows that supporting artists and arts activity is a pathway to solving problems and achieving the goals of our communities. We also hope to empower artists to advocate for themselves. Creative Minnesota 2017 shows that there is an artist on every block, in every community, and that they are already contributing to the health of our economy and are already working to improve their communities. The 2017 study also updates the 2015 Creative Minnesota report about nonprofit arts organizations and adds additional in-depth analysis of the economic lives of Minnesota’s artists and what they need to build a career and a life in the arts. It combines both new, original research and Minnesota-unique data from the national studies.<br><br>
+			    <!-- Arts Multipurpose -->
+				<div id="circle" style="background:#FFC533; width: 15px; height:15px; border-radius:50%; margin-top:15px;display:inline-block;"></div>
+				<p style="color:#FFC533;display:inline-block;">
+				<b>ARTS MULTIPURPOSE</b></p><br>
+				<input id="checkBox_AM" type="checkbox" onclick="clickAM();" checked>
+					<br><br>
 
-It finds that our artists give Minnesota a competitive edge.</p>
-          </div>
+			    <!-- History --> 
+			    <div id="circle" style="display:inline-block;background:#F78F2E; width: 15px; height:15px; border-radius:50%; margin-top:15px;"></div>
+				<p style="color:#F78F2E;display:inline-block;"><b>HISTORY</b></p><br>
+			    <input id="checkBox_HST" type="checkbox" onclick="clickHST();" checked>
+					<br><br>
 
-        </div>
-    </div>
-    <!-- Scripts -->
-    <script src="https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js"></script>
-    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="plugins/leaflet-sidebar.min.js"></script>
-    <script src="script.js"></script>
-  </body>
-</html>
+			    <!-- Humanities --> 
+			    <div id="circle" style="background:#B0D456; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+				<p style="color:#B0D456; display:inline-block;">
+				<b>HUMANITIES</b></p><br>
+			    <input id="checkBox_HUM" type="checkbox" onclick="clickHUM();" checked>
+					<br><br>
+
+			    <!-- Literary & Arts --> 
+				<div id="circle" style="background:#09977E; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+				<p style="color:#09977E; display:inline-block;">
+			    <b>LITERARY & ARTS</b></p><br>
+			    <input id="checkBox_LIT" type="checkbox"  onclick="clickLIT();" checked>
+						<br><br>
+
+			    <!-- Media & Communications --> 
+			   <div id="circle" style="background:#EF5E7D; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+				<p style="color:#EF5E7D; display:inline-block;">
+				<b>MEDIA & COMMUNICATIONS</b></p><br>
+			    <input id="checkBox_COMM" type="checkbox" onclick="clickCOMM();" checked>
+					<br><br>
+
+			    <!-- Other --> 
+			    <div id="circle" style="background:#A05AA2; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+				<p style="color:#A05AA2; display:inline-block;">
+				<b>OTHER</b></p><br>
+			    <input id="checkBox_OTH" type="checkbox" onclick="clickOTH();" checked>
+			    <br><br>
+
+			    <!-- Performing Arts --> 
+			    <div id="circle" style="background:#076E98; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+				<p style="color:#076E98; display:inline-block;">
+				<b>PERFORMING ARTS</b></p><br>
+			    <input id="checkBox_PER" type="checkbox" onclick="clickPER();" checked>
+			    <br><br>
+
+			    <!-- Visual Arts & Architecture --> 
+			    <div id="circle" style="background:#8FD2AC; width: 15px; height:15px; border-radius:50%; margin-top:15px; display:inline-block;"></div>
+				<p style="color:#8FD2AC; display:inline-block;">
+				<b>VISUAL ARTS & ARCHITECTURE</b></p><br>
+			    <input id="checkBox_VIS" type="checkbox" onclick="clickVIS();" checked>
+			</div>
+			  <!-- Help -->
+			  <div class="sidebar-pane" id="help">
+			    <h1 class="sidebar-header">Help<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+			    <p>Creative Minnesota was developed by a collaborative of arts and culture funders in partnership with Minnesota Citizens
+		for the Arts (MCA).<br>
+				    <b>The Creative Minnesota Project</b><br><br>
+
+		The Creative Minnesota project is a collaboration of many partners whose goal is to create solid, hard data about the arts sector. We intend to fill thegaps in available information about Minnesota’s cultural field and to improve our understanding of its importance to our quality of life and economy. This project is a long-term endeavor to collect and report data on the creative sector every two years for analysis, education and advocacy. <br><b>Creative Minnesota 2017</b>
+
+				Creative Minnesota 2017, released in February of 2017, is our second biennial report which is both statewide and 			regional.<br><br>
+
+		Creative Minnesota 2017 shows that supporting artists and arts activity is a pathway to solving problems and achieving the goals of our communities. We also hope to empower artists to advocate for themselves. Creative Minnesota 2017 shows that there is an artist on every block, in every community, and that they are already contributing to the health of our economy and are already working to improve their communities. The 2017 study also updates the 2015 Creative Minnesota report about nonprofit arts organizations and adds additional in-depth analysis of the economic lives of Minnesota’s artists and what they need to build a career and a life in the arts. It combines both new, original research and Minnesota-unique data from the national studies.<br><br>
+
+		It finds that our artists give Minnesota a competitive edge.</p>
+			  </div>
+
+			</div>
+		    </div>
+		    <!-- Scripts -->
+		    <script src="https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js"></script>
+		    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js"></script>
+		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		    <script src="plugins/leaflet-sidebar.min.js"></script>
+		    <script src="script.js"></script>
+		  </body>
+		</html>
 
